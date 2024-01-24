@@ -3,17 +3,17 @@ $(document).ready(function() {
     e.preventDefault();
     const inputAtv = $('#inputAddTarefa').val();
 
-    $(`<li>${inputAtv}</li>`).appendTo('ul');
-
-    $('li').mouseenter(function() {
-      $('li').css('cursor', 'pointer');
-    })
-
-    $('li').click(function() {
-      $(this).toggleClass('strike');
-      $(this).css({'-webkit-user-select': 'none', '-moz-user-select': 'none'});
-    })
+    $('<li>').text(inputAtv).appendTo('ul').addClass('new-task');
 
     $('#inputAddTarefa').val('');
-  })
-})
+  });
+
+  $('ul').on('mouseenter','li.new-task',function() {
+    $(this).css('cursor', 'pointer');
+  });
+
+  $('ul').on('click','li.new-task',function() {
+    $(this).toggleClass('strike');
+    $(this).css({'-webkit-user-select': 'none', '-moz-user-select': 'none'});
+  });
+});
